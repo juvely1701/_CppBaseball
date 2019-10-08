@@ -7,23 +7,20 @@ static const int MAX_NUMBER = 10;
 
 int main() {
     // 1. 0~9 사이의 중복되지 않는 난수 3가지를 골라서 정답을 생성
-    int answer0;
-    int answer1;
-    int answer2;
+    int answers[DIGIT];
 
     while (true) {
-        answer0 = rand() % MAX_NUMBER;
-        answer1 = rand() % MAX_NUMBER;
-        answer2 = rand() % MAX_NUMBER;
+        for (int i = 0; i < DIGIT; ++i)
+            answers[i] = rand() % MAX_NUMBER;
 
-        if (answer0 != answer1 && answer1 != answer2 && answer2 != answer0)
+        //TODO : 까다로우니까 나중에 검토
+        if (answers[0] != answers[1] && answers[1] != answers[2] && answers[2] != answers[0])
             break;
     }
 
     cout << "[ANSWER]" << endl;
-    cout << answer0 << ' ';
-    cout << answer1 << ' ';
-    cout << answer2 << ' ';
+    for (int i = 0; i < DIGIT; ++i)
+        cout << answers[i] << ' ';
     cout << endl;
 
 
@@ -35,18 +32,14 @@ int main() {
 
         cout << "input : " << endl;
 
-        int guess0;
-        int guess1;
-        int guess2;
+        int guesses[DIGIT];
 
-        cin >> guess0;
-        cin >> guess1;
-        cin >> guess2;
+        for (int i = 0; i < DIGIT; ++i)
+            cin >> guesses[i];
 
         cout << "[GUESS]" << endl;
-        cout << guess0 << ' ';
-        cout << guess1 << ' ';
-        cout << guess2 << ' ';
+        for (int i = 0; i < DIGIT; ++i)
+            cout << guesses[i] << ' ';
         cout << endl;
 
         // 3. 정답과 추측을 비교하여 결과 판정
@@ -54,23 +47,29 @@ int main() {
         int ball = 0;
         int out = 0;
 
-        if (guess0 == answer0)
+        for (int i = 0; i < DIGIT; ++i){
+            int j = (i + 1) % DIGIT;
+            int k = (i + 2) % DIGIT;
+
+            if (guesses[i] == answers[i])
+                strike++;
+            else if (guesses[i] == answers[j] || guesses[i] == answers[k])
+                ball++;
+            else
+                out++;
+        }
+
+
+        if (guesses[1] == answers[1])
             strike++;
-        else if (guess0 == answer1 || guess0 == answer2)
+        else if (guesses[1] == answers[2] || guesses[1] == answers[0])
             ball++;
         else
             out++;
 
-        if (guess1 == answer1)
+        if (guesses[2] == answers[2])
             strike++;
-        else if (guess1 == answer2 || guess1 == answer0)
-            ball++;
-        else
-            out++;
-
-        if (guess2 == answer2)
-            strike++;
-        else if (guess2 == answer0 || guess2 == answer1)
+        else if (guesses[2] == answers[0] || guesses[2] == answers[1])
             ball++;
         else
             out++;
