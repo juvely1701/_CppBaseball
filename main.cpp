@@ -27,6 +27,15 @@ void createAnswers(int* answers){
     printNumbers("[ANSWER]", answers);
 }
 
+void inputGuesses(int* guesses){
+    cout << "input : " << endl;
+
+    for (int i = 0; i < DIGIT; ++i)
+        cin >> guesses[i];
+
+    printNumbers("[GUESS]", guesses);
+}
+
 int main() {
     // 1. 0~9 사이의 중복되지 않는 난수 3가지를 골라서 정답을 생성
     int answers[DIGIT];
