@@ -46,6 +46,9 @@ int main() {
 
         // 3. 정답과 추측을 비교하여 결과 판정
         Result result;
+        result.strike = 0;
+        result.ball = 0;
+        result.out = 0;
 
         for (int i = 0; i < DIGIT; ++i){
             int j = (i + 1) % DIGIT;
