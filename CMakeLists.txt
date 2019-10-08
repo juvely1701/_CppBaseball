@@ -3,4 +3,4 @@ project(CppBaseball)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CppBaseball main.cpp Marine.cpp Marine.h Firebat.cpp Firebat.h)
+add_executable(CppBaseball main.cpp Marine.cpp Marine.h Firebat.cpp Firebat.h Unit.cpp Unit.h DarkTemplar.cpp DarkTemplar.h Tank.cpp Tank.h)
