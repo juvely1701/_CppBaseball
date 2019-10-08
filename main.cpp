@@ -7,6 +7,13 @@ using namespace std;
 static const int DIGIT = 3;
 static const int MAX_NUMBER = 10;
 
+void printNumbers(const char* prefix, int* numbers) {
+    cout << prefix << endl;
+    for (int i = 0; i < DIGIT; ++i)
+        cout << numbers[i] << ' ';
+    cout << endl;
+}
+
 int main() {
     // 1. 0~9 사이의 중복되지 않는 난수 3가지를 골라서 정답을 생성
     int answers[DIGIT];
@@ -20,11 +27,7 @@ int main() {
             break;
     }
 
-    cout << "[ANSWER]" << endl;
-    for (int i = 0; i < DIGIT; ++i)
-        cout << answers[i] << ' ';
-    cout << endl;
-
+    printNumbers("[ANSWER]", answers);
 
     // 2. 사용자로부터 3개의 숫자(추측)를 입력 받음
     int tryCount = 0;
@@ -39,10 +42,7 @@ int main() {
         for (int i = 0; i < DIGIT; ++i)
             cin >> guesses[i];
 
-        cout << "[GUESS]" << endl;
-        for (int i = 0; i < DIGIT; ++i)
-            cout << guesses[i] << ' ';
-        cout << endl;
+        printNumbers("[GUESS]", guesses);
 
         // 3. 정답과 추측을 비교하여 결과 판정
         Result result;
