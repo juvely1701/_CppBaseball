@@ -2,6 +2,9 @@
 #include <cstdlib>
 using namespace std;
 
+static const int DIGIT = 3;
+static const int MAX_NUMBER = 10;
+
 int main() {
     // 1. 0~9 사이의 중복되지 않는 난수 3가지를 골라서 정답을 생성
     int answer0;
@@ -9,9 +12,9 @@ int main() {
     int answer2;
 
     while (true) {
-        answer0 = rand() % 10;
-        answer1 = rand() % 10;
-        answer2 = rand() % 10;
+        answer0 = rand() % MAX_NUMBER;
+        answer1 = rand() % MAX_NUMBER;
+        answer2 = rand() % MAX_NUMBER;
 
         if (answer0 != answer1 && answer1 != answer2 && answer2 != answer0)
             break;
@@ -77,7 +80,7 @@ int main() {
         cout << "[RESULT] S:" << strike << " B:" << ball << " O:" << out << endl;
 
         // 5. 추측이 결과와 다르면 2번 단계로 돌아가서 반복
-        if (strike == 3)
+        if (strike == DIGIT)// magic number, hard-coded number, 0/1 예외
             break;
     }
 
