@@ -28,12 +28,36 @@ void createAnswers(int* answers){
 }
 
 void inputGuesses(int* guesses){
+    guesses[0] = 1;
+
     cout << "input : " << endl;
 
     for (int i = 0; i < DIGIT; ++i)
         cin >> guesses[i];
 
     printNumbers("[GUESS]", guesses);
+}
+
+void calculateResult(Result* result, const int* answers, const int* guesses){
+    result->strike = 0;
+    result->ball = 0;
+    result->out = 0;
+
+    for (int i = 0; i < DIGIT; ++i){
+        int j = (i + 1) % DIGIT;
+        int k = (i + 2) % DIGIT;
+
+        if (guesses[i] == answers[i])
+            result->strike++;
+        else if (guesses[i] == answers[j] || guesses[i] == answers[k])
+            result->ball++;
+        else
+            result->out++;
+    }
+}
+
+void printResult(Result* result){
+    cout << "[RESULT] S:" << result->strike << " B:" << result->ball << " O:" << result->out << endl;
 }
 
 int main() {
@@ -52,25 +76,10 @@ int main() {
 
         // 3. 정답과 추측을 비교하여 결과 판정
         Result result;
-        result.strike = 0;
-        result.ball = 0;
-        result.out = 0;
-
-        for (int i = 0; i < DIGIT; ++i){
-            int j = (i + 1) % DIGIT;
-            int k = (i + 2) % DIGIT;
-
-            if (guesses[i] == answers[i])
-                result.strike++;
-            else if (guesses[i] == answers[j] || guesses[i] == answers[k])
-                result.ball++;
-            else
-                result.out++;
-        }
+        calculateResult(&result, answers, guesses);
 
         // 4. 결과를 화면에 출력
-        // [RESULT] S:1 B:2 O:0
-        cout << "[RESULT] S:" << result.strike << " B:" << result.ball << " O:" << result.out << endl;
+        printResult(&result);
 
         // 5. 추측이 결과와 다르면 2번 단계로 돌아가서 반복
         if (result.strike == DIGIT)// magic number, hard-coded number, 0/1 예외
