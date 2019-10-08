@@ -19,6 +19,11 @@ int main() {
     f1->Move(10, 20); // Firebat_Move(f1, 10, 20);
     f2->Move(30, 40);
 
+    f1.
+    f1->x = -100;
+
+
+
     f1->PrintLocation(); // Firebat_PrintLocation(f1);
     delete f1; // Firebat_Destroy(f1);
     delete f2; // Firebat_Destroy(f1);
