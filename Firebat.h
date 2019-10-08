@@ -8,6 +8,8 @@ class Firebat : public Unit {
 
 public:
     Firebat(int x, int y);
+
+    char* GetName() ;
 };
 
 

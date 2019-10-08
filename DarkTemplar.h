@@ -3,11 +3,9 @@
 
 
 #include "Unit.h"
+#include "ProtossUnit.h"
 
-class DarkTemplar : public Unit{
-private:
-    int hp;
-
+class DarkTemplar : public ProtossUnit{
 public:
     DarkTemplar(int x, int y);
 

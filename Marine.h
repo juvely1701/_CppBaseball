@@ -6,6 +6,8 @@
 class Marine : public Unit{
 public:
     Marine(int x, int y);
+
+    char* GetName();
 };
 
 #endif //CPPBASEBALL_MARINE_H

@@ -9,3 +9,11 @@ void Unit::Move(int x, int y) {
 void Unit::PrintLocation(){
     std::cout << this->x << ", " << this->y << std::endl;
 }
+
+void Unit::PrintHP() {
+    std::cout << "HP : " << this->hp << std::endl;
+}
+
+void Unit::GetAttacked(int damage) {
+    this->hp -= damage;
+}

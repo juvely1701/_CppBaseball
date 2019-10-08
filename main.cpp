@@ -20,23 +20,26 @@ void goAndCome(Unit* marine, int x, int y){
 }
 
 int main() {
-    Unit* m1 = new Marine(1,2);
-    goAndCome(m1, 100, 100);
-
-    Unit* f1 = new Firebat(1, 2);
-    goAndCome(f1, 100, 100);
-
 
     Unit* units[3];
     units[0] = new Marine(1,2);
     units[1] = new Firebat(1,2);
-    units[2] = new Tank(1,2);
+    units[2] = new DarkTemplar(1,2);
+
+//    for (int i = 0; i < 3; ++i)
+//        units[i]->Move(3, 4);
+//
+//    for (int i = 0; i < 3; ++i)
+//        units[i]->PrintLocation();
 
     for (int i = 0; i < 3; ++i)
-        units[i]->Move(3, 4);
+        units[i]->GetAttacked(3);
 
     for (int i = 0; i < 3; ++i)
-        units[i]->PrintLocation();
+        units[i]->PrintHP();
+
+    for (int i = 0; i < 3; ++i)
+        cout << "I am " << units[i]->GetName() << endl;
 
     return 0;
 }

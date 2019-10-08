@@ -7,3 +7,7 @@ Firebat::Firebat(int x, int y) {
     this->y = y;
 }
 
+char *Firebat::GetName() {
+    return "Firebat";
+}
+

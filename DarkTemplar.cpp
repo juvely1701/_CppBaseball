@@ -1,7 +1,7 @@
 #include <iostream>
 #include "DarkTemplar.h"
 
-DarkTemplar::DarkTemplar(int x, int y) {
+DarkTemplar::DarkTemplar(int x, int y) : ProtossUnit(x, y) {
     this->x = x;
     this->y = y;
 }
@@ -9,3 +9,4 @@ DarkTemplar::DarkTemplar(int x, int y) {
 void DarkTemplar::Cloak() {
     std::cout << "cloaked" << std::endl;
 }
+
