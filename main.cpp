@@ -1,5 +1,7 @@
 #include <iostream>
 #include <cstdlib>
+#include "Result.h"
+
 using namespace std;
 
 static const int DIGIT = 3;
@@ -43,43 +45,26 @@ int main() {
         cout << endl;
 
         // 3. 정답과 추측을 비교하여 결과 판정
-        int strike = 0;
-        int ball = 0;
-        int out = 0;
+        Result result;
 
         for (int i = 0; i < DIGIT; ++i){
             int j = (i + 1) % DIGIT;
             int k = (i + 2) % DIGIT;
 
             if (guesses[i] == answers[i])
-                strike++;
+                result.strike++;
             else if (guesses[i] == answers[j] || guesses[i] == answers[k])
-                ball++;
+                result.ball++;
             else
-                out++;
+                result.out++;
         }
-
-
-        if (guesses[1] == answers[1])
-            strike++;
-        else if (guesses[1] == answers[2] || guesses[1] == answers[0])
-            ball++;
-        else
-            out++;
-
-        if (guesses[2] == answers[2])
-            strike++;
-        else if (guesses[2] == answers[0] || guesses[2] == answers[1])
-            ball++;
-        else
-            out++;
 
         // 4. 결과를 화면에 출력
         // [RESULT] S:1 B:2 O:0
-        cout << "[RESULT] S:" << strike << " B:" << ball << " O:" << out << endl;
+        cout << "[RESULT] S:" << result.strike << " B:" << result.ball << " O:" << result.out << endl;
 
         // 5. 추측이 결과와 다르면 2번 단계로 돌아가서 반복
-        if (strike == DIGIT)// magic number, hard-coded number, 0/1 예외
+        if (result.strike == DIGIT)// magic number, hard-coded number, 0/1 예외
             break;
     }
 
