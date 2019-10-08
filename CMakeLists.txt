@@ -3,4 +3,4 @@ project(CppBaseball)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CppBaseball main.cpp Result.h)
+add_executable(CppBaseball main.cpp)
