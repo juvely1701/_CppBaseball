@@ -14,10 +14,7 @@ void printNumbers(const char* prefix, int* numbers) {
     cout << endl;
 }
 
-int main() {
-    // 1. 0~9 사이의 중복되지 않는 난수 3가지를 골라서 정답을 생성
-    int answers[DIGIT];
-
+void createAnswers(int* answers){
     while (true) {
         for (int i = 0; i < DIGIT; ++i)
             answers[i] = rand() % MAX_NUMBER;
@@ -28,21 +25,21 @@ int main() {
     }
 
     printNumbers("[ANSWER]", answers);
+}
 
-    // 2. 사용자로부터 3개의 숫자(추측)를 입력 받음
+int main() {
+    // 1. 0~9 사이의 중복되지 않는 난수 3가지를 골라서 정답을 생성
+    int answers[DIGIT];
+    createAnswers(answers);
+
     int tryCount = 0;
 
     while (true) {
         tryCount++;
 
-        cout << "input : " << endl;
-
+        // 2. 사용자로부터 3개의 숫자(추측)를 입력 받음
         int guesses[DIGIT];
-
-        for (int i = 0; i < DIGIT; ++i)
-            cin >> guesses[i];
-
-        printNumbers("[GUESS]", guesses);
+        inputGuesses(guesses);
 
         // 3. 정답과 추측을 비교하여 결과 판정
         Result result;
